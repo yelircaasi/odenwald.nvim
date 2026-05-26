@@ -57,6 +57,9 @@ return {
     diff_delete = '#893f45', --   '#893f45',
     diff_change = '#2a3a57', --   '#2a3a57',
     diff_text = '#3a4a67', --     '#3a4a67',
+    teal = '#197a76',
+    brown = '#623607',
+    gold = '#a5972b',
   },
   darker = {
     contrast = '#101210',
@@ -85,6 +88,9 @@ return {
     diff_delete = '#893f45',
     diff_change = '#2a3a57',
     diff_text = '#3a4a67',
+    teal = '#0f5654',
+    brown = '#623607',
+    gold = '#6c631c',
   },
   light = {
     contrast = '#fff8f0',
@@ -113,5 +119,8 @@ return {
     diff_delete = '#f9afb5',
     diff_change = '#d2dceb',
     diff_text = '#c2ccdb',
+    teal = '#073534',
+    brown = '#623607',
+    gold = '#6c631c',
   },
 }

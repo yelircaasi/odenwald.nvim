@@ -43,6 +43,7 @@ local colors = {
   Green = { fg = c.green },
   Blue = { fg = c.blue },
   Purple = { fg = c.purple },
+  Teal = { fg = c.teal },
 }
 
 local normal_bg = cfg.transparent and c.none or c.bg0
@@ -62,8 +63,23 @@ local rainbows = {
   blue = util.blend(c.blue, c.inverse, rainblend),
   purple = util.blend(c.purple, c.inverse, rainblend),
 }
+local light_blue = util.lighten(c.blue, 0.2)
+local light_green = util.lighten(c.green, 0.2)
 
 hl.common = {
+  -- THINGS
+
+  -- ACTIONS
+
+  -- SPECIAL THINGS
+
+  -- STRUCTURE
+
+  -- DIM
+  LineNr = { fg = c.grey },
+  Folded = { fg = c.fg, bg = c.bg1 },
+
+
   Normal = { fg = c.fg, bg = normal_bg },
   NormalNC = {
     fg = cfg.dim_inactive and c.light_grey or c.fg,
@@ -76,7 +92,6 @@ hl.common = {
   Terminal = { fg = c.fg, bg = normal_bg },
   EndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg0 },
   FoldColumn = { fg = c.fg },
-  Folded = { fg = c.fg, bg = c.bg1 },
   SignColumn = { fg = c.fg },
   ToolbarLine = { fg = c.fg },
   Cursor = { reverse = true },
@@ -86,7 +101,6 @@ hl.common = {
   CursorLine = { bg = c.bg1 },
   ColorColumn = { bg = util.blend(c.bg1, c.green, 0.125) },
   CursorLineNr = { fg = c.fg },
-  LineNr = { fg = c.grey },
   Conceal = colors.LightGrey,
   DiffAdd = { fg = c.none, bg = c.diff_add },
   DiffChange = { fg = c.none, bg = c.diff_change },
@@ -143,50 +157,62 @@ hl.common = {
 }
 
 hl.syntax = {
-  String = vim.tbl_extend('force', { fg = c.green }, cfg.code_style.strings),
-  Constant = colors.Orange,
-  Character = { link = 'Constant' },
-  Number = { link = 'Constant' },
-  Float = { link = 'Constant' },
-  Boolean = { link = 'Constant' },
-  Type = colors.Yellow,
-  Typedef = { link = 'Type' },
-  Structure = { link = 'Type' },
-  StorageClass = { fg = c.yellow, italic = true },
-  Identifier = vim.tbl_extend(
-    'force',
-    { fg = c.red },
-    cfg.code_style.variables
-  ),
-  PreProc = colors.Purple,
-  PreCondit = { link = 'PreProc' },
-  Include = { link = 'PreProc' },
-  Define = { link = 'PreProc' },
+  -- STRUCTURE
+  Repeat = { link = 'Keyword' },
   Keyword = vim.tbl_extend('force', { fg = c.purple }, cfg.code_style.keywords),
-  Exception = { link = 'Keyword' },
+  Delimiter = colors.LightGrey,
   Conditional = vim.tbl_extend(
     'force',
     { fg = c.purple },
     cfg.code_style.conditionals
   ),
-  Repeat = { link = 'Keyword' },
-  Statement = colors.Purple,
-  Macro = { fg = c.bright_purple },
-  Error = colors.Red,
-  Label = { fg = c.red, bold = true },
-  Special = colors.Red,
-  SpecialChar = { link = 'Special' },
-  Function = vim.tbl_extend('force', { fg = c.blue }, cfg.code_style.functions),
-  Operator = { fg = light_purple },
+
+  -- THINGS
   Tag = colors.Blue,
-  Delimiter = colors.LightGrey,
+  Identifier = vim.tbl_extend(
+    'force',
+    { fg = c.light_blue },
+    cfg.code_style.variables
+  ),
+
+  -- SPECIAL THINGS
+  Special = colors.Cyan,
+  SpecialChar = { link = 'Special' },
+  Constant = colors.Teal,
+
+  -- ATTENTION
+  Error = colors.Red,
+  Todo = { fg = c.contrast, bg = c.purple, bold = true },
+
+  -- ACTION
+  Operator = { fg = light_green },
+  Function = vim.tbl_extend('force', { fg = c.green }, cfg.code_style.functions),
+
+  Macro = { fg = c.bright_purple },
+
+  -- CONSTANTS
+  String = vim.tbl_extend('force', { fg = c.gold }, cfg.code_style.strings),
+  Character = { link = 'Constant' },
+  Number = { link = 'Constant' },
+  Float = { link = 'Constant' },
+  Boolean = { link = 'Constant' },
+  Type = { fg = dark_cyan },
+  Typedef = { link = 'Type' },
+  Structure = { link = 'Type' },
+  StorageClass = { fg = c.yellow, italic = true },
+  PreProc = colors.Purple,
+  PreCondit = { link = 'PreProc' },
+  Include = { link = 'PreProc' },
+  Define = { link = 'PreProc' },
+  Exception = { link = 'Keyword' },
+  Statement = { fg = c.brown },
+  Label = { fg = c.red, bold = true },
   Comment = vim.tbl_extend(
     'force',
     { fg = c.light_grey },
     cfg.code_style.comments
   ),
   SpecialComment = { link = 'Comment' },
-  Todo = { fg = c.contrast, bg = c.purple, bold = true },
 
   Underlined = { underline = true },
   Bold = { bold = true },
@@ -1172,7 +1198,7 @@ local lsp_kind_icons_color = {
   Default = c.purple,
   Array = c.yellow,
   Boolean = c.orange,
-  Class = c.yellow,
+  Class = c.light_blue,
   Color = c.green,
   Constant = c.orange,
   Constructor = c.blue,
@@ -1182,23 +1208,23 @@ local lsp_kind_icons_color = {
   Field = c.cyan,
   File = c.green,
   Folder = c.light_blue,
-  Function = c.blue,
+  Function = c.green,
   Interface = c.green,
   Key = c.cyan,
-  Keyword = c.purple,
-  Method = c.blue,
+  Keyword = c.brown,
+  Method = c.green,
   Module = c.light_blue,
   Namespace = c.light_blue,
   Null = c.grey,
   Number = c.orange,
-  Object = c.red,
-  Operator = light_purple,
+  Object = c.light_purple,
+  Operator = light_green,
   Package = c.yellow,
   Property = c.cyan,
   Reference = c.orange,
   Snippet = c.bright_purple,
-  String = c.green,
-  Struct = c.yellow,
+  String = c.grey,
+  Struct = c.teal,
   Text = c.light_grey,
   TypeParameter = c.coral,
   Unit = c.yellow,
