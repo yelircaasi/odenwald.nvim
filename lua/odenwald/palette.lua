@@ -41,7 +41,7 @@ return {
     bg_blue = '#68aee8', --       '#68aee8',
     bg_yellow = '#e2c792', --     '#e2c792',
     fg = '#81B5AC', --            '#81B5AC',
-    purple = '#3E4C96', --        '#3E4C96',
+    purple = '#3E4C96', --        '#3E4C96',f
     bright_purple = '#883E96', -- '#883E96',
     green = '#4C963E', --         '#4C963E',
     orange = '#96883E', --        '#96883E',
